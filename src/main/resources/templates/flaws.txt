@@ -1,3 +1,5 @@
+Latest update: 10 Jan 2017
+
 The application of the project is a service where you submit your car position
 transmitter ("black box") serial number into the service in order to participate
 in testing the functioning of the black box and the related forthcoming
