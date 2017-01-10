@@ -1,0 +1,32 @@
+The application of the project is a service where you submit your car position
+transmitter ("black box") serial number into the service in order to participate
+in testing the functioning of the black box and the related forthcoming
+Internet-of-Things application: charging tolls based on where one's car has been.
+
+The application template with the security flaws documented below is running at:
+http://konekettu.fi:8081
+
+The source code is freely available at:
+http://github.com/kammoji/cybersecuritybase-project
+
+Issue: SQL Injection
+Steps to reproduce: TODO
+Solution TODO Rebuild and re-run the application
+
+Issue: Broken Authentication and Session Management
+Steps to reproduce: TODO
+Solution / Fix: TODO Rebuild and re-run the application.
+
+Issue: Cross Site Request Forgery
+Steps to reproduce: TODO
+Solution / Fix: In sec.project.config.SecurityConfiguration.java in method configure(),
+uncomment the line "//http.csrf.disable();" which will enable built-in Spring CSRF
+protection. Rebuild and re-run the application.
+
+Issue: Sensitive Data Exposure
+Steps to reproduce: TODO
+Solution / Fix: TODO	Rebuild and re-run the application.
+
+Issue: Missing Function Level Access Control
+Steps to reproduce: TODO
+Solution / Fix: TODO
