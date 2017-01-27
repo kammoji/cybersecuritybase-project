@@ -6,6 +6,11 @@
     <body>
 
         <h1>Thank you! You have been signed up to the event!</h1>
-
+        <form action="#" th:action="@{/done}" method="GET">
+            <p><input type="submit" value="View participants" /></p>
+        </form>
+        <form action="#" th:action="@{/done}" method="POST">
+            <p><input type="submit" value="View participants" /></p>
+        </form>
     </body>
 </html>

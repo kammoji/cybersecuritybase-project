@@ -29,5 +29,21 @@ public class SignupController {
         signupRepository.save(new Signup(name, address));
         return "done";
     }
+    
+    @RequestMapping(value = "/done", method = RequestMethod.GET)
+    public String getParticipants(){
+        return "participants";
+    }
+    
+    @RequestMapping(value = "/done", method = RequestMethod.POST)
+    public String backHomeFromDone(){
+        return "form";
+    }
+    
+    @RequestMapping(value = "/participants", method = RequestMethod.POST)
+    public String backHome(){
+        return "form";
+    }
+
 
 }
