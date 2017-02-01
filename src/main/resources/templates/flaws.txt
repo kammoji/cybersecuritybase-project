@@ -15,7 +15,7 @@ Issue: SQL Injection
 Steps to reproduce: TODO
 Solution TODO Rebuild and re-run the application
 
-Issue: Broken Authentication and Session Management
+Issue: Broken Authentication and Session Management (all users logged in using same name)
 Steps to reproduce: TODO
 Solution / Fix: TODO Rebuild and re-run the application.
 
@@ -24,6 +24,8 @@ Steps to reproduce: TODO
 Solution / Fix: In sec.project.config.SecurityConfiguration.java in method configure(),
 uncomment the line "//http.csrf.disable();" which will enable built-in Spring CSRF
 protection. Rebuild and re-run the application.
+Alternative solution / Fix: Develop the application to only accept POST requests in critical
+phases (="business logic")
 
 Issue: Sensitive Data Exposure
 Steps to reproduce: TODO

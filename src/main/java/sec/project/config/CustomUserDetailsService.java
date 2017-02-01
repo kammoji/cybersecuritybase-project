@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-
+    
     private Map<String, String> accountDetails;
 
     @PostConstruct
