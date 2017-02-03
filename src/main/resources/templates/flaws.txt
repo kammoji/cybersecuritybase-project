@@ -14,7 +14,7 @@ http://github.com/kammoji/cybersecuritybase-project
 Issue: Cross-Site scripting (XSS)
 Steps to reproduce:
 1. Navigate to http://konekettu.fi:8081
-2. Enter username "</td><a href="192.168.100.3/kettu2.png>Click me!</a><td>" and serial number "12345"
+2. Enter username "</td><a href="konekettu.fi/kettu2.png">Click me!</a><td>" and serial number "12345"
 3. Click "Submit"
 4. Some older browsers will show a hyperlink to an image on the opening page.
 Solution / Fix: Update your browser if the link to an image is shown.
