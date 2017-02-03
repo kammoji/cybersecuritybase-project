@@ -31,7 +31,7 @@ public class SignupController {
             return "error";
         }
         signupRepository.save(new Signup(name, address));
-        model.addAttribute("username", signupRepository.findByName(name).getName());
+        model.addAttribute("userdata", signupRepository.findByName(name));
         return "done";
     }
     

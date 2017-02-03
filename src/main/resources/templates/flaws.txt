@@ -1,4 +1,4 @@
-Latest update: 23 Jan 2017
+Latest update: 03 Feb 2017
 
 The application of the project is a service where you submit your car position
 transmitter ("black box") serial number into the service in order to participate
@@ -11,16 +11,30 @@ http://konekettu.fi:8081
 The source code is freely available at:
 http://github.com/kammoji/cybersecuritybase-project
 
-Issue: SQL Injection
-Steps to reproduce: TODO
-Solution TODO Rebuild and re-run the application
+Issue: Cross-Site scripting (XSS)
+Steps to reproduce:
+1. Navigate to http://konekettu.fi:8081
+2. Enter username "</td><a href="192.168.100.3/kettu2.png>Click me!</a><td>" and serial number "12345"
+3. Click "Submit"
+4. Some older browsers will show a hyperlink to an image on the opening page.
+Solution / Fix: Update your browser if the link to an image is shown.
 
-Issue: Broken Authentication and Session Management (all users logged in using same name)
-Steps to reproduce: TODO
-Solution / Fix: TODO Rebuild and re-run the application.
+Issue: Broken Authentication and Session Management
+Steps to reproduce:
+1. Navigate to http://konekettu.fi:8081
+2. Enter username "new" and serial number "12345"
+3. Click "Submit"
+4. Observe the following page showing you logged in as "new"
+5. Click "View participants"
+6. Observe the following page showing you logged in as NULL.
+Solution / Fix: Enable proper authentication e.g. through cookies and control
+these in sec.project.controller.SignupController.java
 
 Issue: Cross Site Request Forgery
-Steps to reproduce: TODO
+Steps to diagnose:
+1. Access source code of the application in e.g. NetBeans.
+2. Navigate to sec.project.config.SecurityConfiguration.java and open the file in editor.
+3. Observe all security settings disabled and application accepting all requests.
 Solution / Fix: In sec.project.config.SecurityConfiguration.java in method configure(),
 uncomment the line "//http.csrf.disable();" which will enable built-in Spring CSRF
 protection. Rebuild and re-run the application.
@@ -29,8 +43,22 @@ phases (="business logic")
 
 Issue: Sensitive Data Exposure
 Steps to reproduce: TODO
-Solution / Fix: TODO	Rebuild and re-run the application.
+1. Navigate to http://konekettu.fi:8081
+2. Enter name "exposure" and serial number "12345"
+3. On the opening page, click "View participants"
+4. Observe all registered participants with their Black Box serial numbers being shown.
+Solution / Fix: Prevent serial numbers of other users from being shown by,
+(a) Not adding this information to the model in sec.project.controller.SignupController.java
+(b) Editing /src/main/resources/templates/participants.html to not show this data
 
 Issue: Missing Function Level Access Control
-Steps to reproduce: TODO
-Solution / Fix: TODO
+Steps to reproduce:
+1. Navigate to http://konekettu.fi:8081
+2. Enter name "function" and serial number "12345"
+3. Click "Submit"
+4. On the opening page click "Back to signup"
+5. Enter name "function" and serial number "23456"
+6. Click "Submit"
+7. The error page opens, as the database cannot handle two users with the same name
+Solution / Fix: In sec.project.controller.SignupController.java in method submitForm(),
+add functionality to prevent two users with same name from logging in.

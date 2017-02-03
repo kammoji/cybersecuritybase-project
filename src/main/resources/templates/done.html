@@ -2,13 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Thank you!</title>
-        <link rel="stylesheet" type="text/css" th:href="main.css"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
     </head>
     <body>
 
         <h1>Thank you! You have been signed up to the event!</h1>
         
-        <table><tr><td>You are logged in as:</td><td th:text="${username}">User name</td></tr></table>
+        <table><tr><td>You are logged in as:</td><td th:text="${userdata.name}">User name</td></tr></table>
         
         <form action="#" th:action="@{/done}" method="GET">
             <p><input type="submit" value="View participants" /></p>
